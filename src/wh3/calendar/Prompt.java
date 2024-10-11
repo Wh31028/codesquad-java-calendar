@@ -23,7 +23,7 @@ public class Prompt {
 		Calendar cal = new Calendar();
 		int month = 1;
 		int year = 2017;
-		int weekday=0;
+
 		while (true) {
 			System.out.println("년도를 입력하세요.(exit: -1)");
 			System.out.print("YEAR>");
@@ -32,10 +32,6 @@ public class Prompt {
 			System.out.println("월을 입력하세요.");
 			System.out.print("MONTH>");
 			month = scanner.nextInt();
-			System.out.println("첫번째 요일을 입력하세요.(su, mo, we, th, fr, sa)");
-			System.out.print("WEEKDAY>");
-			String str_weekday=scanner.next();
-			weekday = parseDay(str_weekday);
 			
 			
 			if (month > 12 || month<1) {
@@ -43,7 +39,7 @@ public class Prompt {
 				continue;
 			}
 				
-			cal.printCalendar(year, month,weekday);
+			cal.printCalendar(year, month);
 		}
 		System.out.println("Have a nice day!");
 
