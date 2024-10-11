@@ -45,11 +45,11 @@ public class Prompt {
 
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
-		boolean isLoop =true;
+		boolean isLoop = true;
 		while (isLoop) {
 			System.out.println("명령 (1, 2, 3, h, q)");
 			String cmd = scanner.next();
-			switch(cmd) {
+			switch (cmd) {
 			case "1":
 				cmdRegister(scanner, cal);
 				break;
@@ -63,7 +63,7 @@ public class Prompt {
 				printMenu();
 				break;
 			case "q":
-				isLoop=false;
+				isLoop = false;
 				break;
 			}
 		}
@@ -97,14 +97,16 @@ public class Prompt {
 		System.out.println("[일정 검색]");
 		System.out.println("날짜를 입력해주세요.(yyyy-MM-dd)");
 		String date = s.next();
-		String plan = " ";
-		try {
-			plan = c.searchPlan(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-			System.err.println("일정 검색중 오류가 발생했습니다.");
+		PlanItem plan;
+
+		plan = c.searchPlan(date);
+		
+		if(plan!=null) {
+			System.out.println(plan.detail);
+		}else {
+			System.out.println("일정이 없습니다");
 		}
-		System.out.println(plan);
+			
 	}
 
 	private void cmdRegister(Scanner s, Calendar c) throws ParseException {
