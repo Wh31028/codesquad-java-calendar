@@ -1,5 +1,10 @@
 package wh3.calendar;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -120,10 +125,37 @@ public class Prompt {
 		c.registerPlan(date, text);
 
 	}
+	public void write() {
+		try(BufferedWriter bout = new BufferedWriter(new FileWriter("./test3.txt"))){
+				String line = "";
+				while(true) {
+					
+					bout.write(line);
+					bout.newLine();
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	}
+	public void read() {
+		try(BufferedReader bin = new BufferedReader(new FileReader("./test3.txt"));) {
+				String line = "";
+				while((line = bin.readLine()) != null) {
+					System.out.println(line);
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+	}
 
 	public static void main(String[] args) throws ParseException {
+		
 		// 셀 실행
 		Prompt p = new Prompt();
+//		p.write();
 		p.runPrompt();
 
 	}
